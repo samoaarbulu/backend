@@ -9,21 +9,10 @@ import {
   MaxLength,
   Min,
 } from 'class-validator';
-
-function toNumberOrUndefined(value: unknown): unknown {
-  if (value === undefined || value === null || value === '') {
-    return undefined;
-  }
-  return Number(value);
-}
-
-function toTrimmedStringOrUndefined(value: unknown): unknown {
-  if (typeof value !== 'string') {
-    return value;
-  }
-  const trimmed = value.trim();
-  return trimmed.length > 0 ? trimmed : undefined;
-}
+import {
+  toNumberOrUndefined,
+  toTrimmedStringOrUndefined,
+} from './place-transformers.js';
 
 export class NearbyPlacesQueryDto {
   @ApiProperty({
@@ -105,4 +94,3 @@ export class NearbyPlacesQueryDto {
   @Max(5000)
   offset: number = 0;
 }
-

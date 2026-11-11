@@ -46,11 +46,12 @@ export class NearbyPlaceItemDto {
   @ApiProperty({ example: -80.1912 })
   longitude: number;
 
-  @ApiProperty({
+  @ApiPropertyOptional({
     example: 295,
-    description: 'Distancia geodésica exacta al punto GPS en metros',
+    nullable: true,
+    description: 'Distancia geodésica exacta al punto GPS en metros (si se envió GPS)',
   })
-  distanceMeters: number;
+  distanceMeters: number | null;
 }
 
 export class NearbyPlacesMetaDto {

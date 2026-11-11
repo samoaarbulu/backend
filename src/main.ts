@@ -21,6 +21,7 @@ async function bootstrap() {
     defaultVersion: '1',
   });
   app.enableCors();
+  app.enableShutdownHooks();
 
   // Documentación OpenAPI / Swagger UI (habilitada fuera de producción o si se solicita explícitamente)
   if (process.env.NODE_ENV !== 'production' || process.env.ENABLE_SWAGGER === 'true') {
