@@ -3,6 +3,8 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { PlaceEntity } from '../places/entities/place.entity.js';
 import { CreateGeoPlacesTable1715000000000 } from './migrations/1715000000000-CreateGeoPlacesTable.js';
 import { AddRichDetailsToGeoPlacesTable1715000000001 } from './migrations/1715000000001-AddRichDetailsToGeoPlacesTable.js';
+import { AddGeographyIndexToGeoPlaces1715000000002 } from './migrations/1715000000002-AddGeographyIndexToGeoPlaces.js';
+import { GrantGeoSchemaPermissions1715000000003 } from './migrations/1715000000003-GrantGeoSchemaPermissions.js';
 
 export function buildDataSourceOptions(rawUrl?: string): DataSourceOptions {
   if (!rawUrl) {
@@ -23,6 +25,8 @@ export function buildDataSourceOptions(rawUrl?: string): DataSourceOptions {
     migrations: [
       CreateGeoPlacesTable1715000000000,
       AddRichDetailsToGeoPlacesTable1715000000001,
+      AddGeographyIndexToGeoPlaces1715000000002,
+      GrantGeoSchemaPermissions1715000000003,
     ],
     synchronize: false, // Prohibido true en arquitectura CREDS
     logging: process.env.NODE_ENV === 'development',
