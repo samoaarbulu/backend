@@ -1,3 +1,4 @@
+import { VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module.js';
@@ -5,8 +6,11 @@ import { AppModule } from './app.module.js';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Prefijo global para todos los endpoints REST
-  app.setGlobalPrefix('api');
+  // Versionado URI (/v1/...) para todos los endpoints de negocio
+  app.enableVersioning({
+    type: VersioningType.URI,
+    defaultVersion: '1',
+  });
   app.enableCors();
 
   // Documentación OpenAPI / Swagger UI (habilitada fuera de producción o si se solicita explícitamente)
@@ -29,7 +33,7 @@ async function bootstrap() {
       .build();
 
     const documentFactory = () => SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api/docs', app, documentFactory, {
+    SwaggerModule.setup('docs', app, documentFactory, {
       swaggerOptions: {
         persistAuthorization: true,
       },
@@ -38,9 +42,9 @@ async function bootstrap() {
 
   const port = process.env.PORT ?? 3000;
   await app.listen(port);
-  console.log(`🚀 CREDS API corriendo en: http://localhost:${port}/api`);
+  console.log(`🚀 CREDS API corriendo en: http://localhost:${port}/v1`);
   if (process.env.NODE_ENV !== 'production' || process.env.ENABLE_SWAGGER === 'true') {
-    console.log(`📚 Documentación Swagger disponible en: http://localhost:${port}/api/docs `);
+    console.log(`📚 Documentación Swagger disponible en: http://localhost:${port}/docs`);
   }
 }
 await bootstrap();
