@@ -116,3 +116,4 @@ export class SearchPlacesQueryDto {
   @Max(5000)
   offset: number = 0;
 }
+

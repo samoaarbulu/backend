@@ -31,3 +31,4 @@ export class SearchPlacesResponseDto {
   @ApiProperty({ type: SearchPlacesMetaDto })
   meta: SearchPlacesMetaDto;
 }
+

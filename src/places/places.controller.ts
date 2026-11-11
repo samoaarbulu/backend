@@ -9,7 +9,7 @@ import { PlacesService } from './places.service.js';
 @ApiTags('Places')
 @Controller('places')
 export class PlacesController {
-  constructor(private readonly placesService: PlacesService) {}
+  constructor(private readonly placesService: PlacesService) { }
 
   @Get('nearby')
   @ApiOperation({
