@@ -40,7 +40,7 @@ async function bootstrap() {
   await app.listen(port);
   console.log(`🚀 CREDS API corriendo en: http://localhost:${port}/api`);
   if (process.env.NODE_ENV !== 'production' || process.env.ENABLE_SWAGGER === 'true') {
-    console.log(`📚 Documentación Swagger disponible en: http://localhost:${port}/api/docs`);
+    console.log(`📚 Documentación Swagger disponible en: http://localhost:${port}/api/docs `);
   }
 }
 await bootstrap();
