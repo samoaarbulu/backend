@@ -80,3 +80,4 @@ export class NearbyPlacesResponseDto {
   @ApiProperty({ type: NearbyPlacesMetaDto })
   meta: NearbyPlacesMetaDto;
 }
+

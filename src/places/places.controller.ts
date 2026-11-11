@@ -20,3 +20,4 @@ export class PlacesController {
     return this.placesService.findNearby(query);
   }
 }
+

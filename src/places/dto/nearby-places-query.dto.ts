@@ -105,3 +105,4 @@ export class NearbyPlacesQueryDto {
   @Max(5000)
   offset: number = 0;
 }
+

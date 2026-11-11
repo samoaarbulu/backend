@@ -19,3 +19,4 @@ export class AddGeographyIndexToGeoPlaces1715000000002
     );
   }
 }
+
